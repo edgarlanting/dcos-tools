@@ -8,16 +8,13 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-
 def get_dcos_url_from_cli():
     res = subprocess.run(["dcos", "config", "show", "core.dcos_url"], shell=False, stdout=subprocess.PIPE)
     return res.stdout.strip().decode("utf-8")
 
-
 def get_dcos_token_from_cli():
     res = subprocess.run(["dcos", "config", "show", "core.dcos_acs_token"], shell=False, stdout=subprocess.PIPE)
     return res.stdout.strip().decode("utf-8")
-
 
 if __name__ == "__main__":
     url = get_dcos_url_from_cli()
